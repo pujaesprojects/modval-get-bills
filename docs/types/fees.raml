@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+
+uses:
+  amount: amount.raml
+
+types:
+  fees:
+    type: object
+    properties:
+      totalFees:
+        type: amount.amount
+        description: Sum of total amount of all fees.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED

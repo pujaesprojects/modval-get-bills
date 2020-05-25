@@ -1,0 +1,52 @@
+{
+  "data": {
+    "id": "d7b06ec55ea12ac360c",
+    "number": "12345405625509722",
+    "maturityDate": "2020-03-01T00:00:00-05:00",
+    "issueDate": "2020-03-01T00:00:00-05:00",
+    "billDetailsRequest": {
+      "creationDate": "2020-02-01T15:00:00-05:00"
+    },
+    "service": {
+      "id": "1354"
+    },
+    "additionalFields": [
+      {
+        "additionalPaymentField": {
+          "id": "ID_CLIENT"
+        },
+        "value": "12AB34CD"
+      }
+    ],
+    "amounts": [
+      {
+        "amountType": {
+          "id": "TOTAL_DEBT",
+          "name": "Total debt amount"
+        },
+        "amountValue": {
+          "amount": 50000,
+          "currency": "COP"
+        }
+      }
+    ],
+    "fees": {
+      "totalFees": {
+        "amount": 500,
+        "currency": "COP"
+      },
+      "itemizeFees": [
+        {
+          "feeType": {
+            "id": "MANAGEMENT_FEE",
+            "name": "Management fee"
+          },
+          "feeAmount": {
+            "amount": 500,
+            "currency": "COP"
+          }
+        }
+      ]
+    }
+  }
+}

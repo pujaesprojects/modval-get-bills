@@ -1,0 +1,1 @@
+This API includes the services related to the asynchronous payment of agreements. A settlement payment is a payment made by a customer to a company or supplier as a result of an outstanding debt.

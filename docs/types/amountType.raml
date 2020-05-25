@@ -1,0 +1,37 @@
+#%RAML 1.0 Library
+
+uses:
+  bill: bill.raml
+
+types:
+  amountType:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Amount type identifier.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+          - method: POST
+            input: REQUIRED
+            output: NONE
+        enum: [TOTAL_DEBT, MAX_AMOUNT, MIN_AMOUNT, DELAY_AMOUNT]
+        (annotations.enumDescription):
+          - TOTAL_DEBT: Total amount that customer has debited for service.
+          - MAX_AMOUNT: This type is used only when the service doesn't have a specific required amount and it allows the customer to introduce a custom amount to pay between a minimum and maximum so the customer needs to know the amount that he can enter.
+          - MIN_AMOUNT: Amount (less than the total debt) that is necessary to pay in order to reactivate service.
+          - DELAY_AMOUNT: Moratorium amount by inclusion of payment on the due date. Not applies to all bills.
+      name:
+        type: string
+        description: Amount type name
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+          - method: POST
+            input: REQUIRED
+            output: NONE

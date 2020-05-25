@@ -1,0 +1,83 @@
+#%RAML 1.0 Library
+
+uses:
+  billAmount: billAmount.raml
+  fees: fees.raml
+  additionalField: additionalField.raml
+
+types:
+  bill:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Bill unique identifier.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      number:
+        type: string
+        description: Number that univocally identifies the bill. It may be know by the customer or can be obtained through digital codes like QR or barcodes.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      maturityDate: 
+        type: datetime
+        description: String based on ISO-8601 date format for providing the date on which the invoice is due and payment is required in advance.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+      issueDate:
+        type: datetime
+        description: String based on ISO-8601 date format for providing the date on which the invoice was issued.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+      billDetailsRequest:
+        type: billDetailsRequest.billDetailsRequest
+        description: Information provided in the request of this operation.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      service:
+        type: service.service
+        description: Information corresponding to the service you wish to consult.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      amounts:
+        type: billAmount.billAmount[]
+        description: List of possible amounts to pay for the current bill. Customer can pay the total debt or maybe they can only pay an amount that allows them to reactivate service (in case they have been cutted down). If returned, at least the total amount must be provided. This amount does not include any charges that the bank may apply to the operation.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      fees:
+        type: fees.fees
+        description: Fee that must be paid for payment operation.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+      additionalFields:
+        type: additionalField.additionalField[]
+        description: List of values for the additional form fields of the service paid. For each additional form field, a key-value pair will be provided.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED

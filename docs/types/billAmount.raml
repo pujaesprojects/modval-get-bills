@@ -1,0 +1,31 @@
+#%RAML 1.0 Library
+uses:
+  amountType: amountType.raml
+  amount: amount.raml
+
+types:
+  billAmount:
+    type: object
+    properties:
+      amountType:
+        type: amountType.amountType
+        description: Amount type.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+          - method: POST
+            input: REQUIRED
+            output: NONE
+      amountValue:
+        type: amount.amount
+        description: Amount to pay.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+          - method: POST
+            input: REQUIRED
+            output: NONE

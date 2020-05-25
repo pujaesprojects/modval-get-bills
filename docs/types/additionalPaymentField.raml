@@ -1,0 +1,20 @@
+#%RAML 1.0 Library
+
+uses:
+  bill: bill.raml
+
+types:
+  additionalPaymentField:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Identifier of the additional payment field.
+        required: false
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+          - method: POST
+            input: REQUIRED
+            output: REQUIRED

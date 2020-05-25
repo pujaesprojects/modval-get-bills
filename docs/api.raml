@@ -1,0 +1,33 @@
+#%RAML 1.0
+title: Bills
+version: v0.1.0
+baseUri: https://domain.com/api/bills/
+description: !include apiDescription.md
+
+uses:
+  bill: types/bill.raml
+
+/bills:
+  description: List of bills supplied in a specific payment process.
+  type: Object
+  /{bill-id}:
+    description: Detail information about an agreement invoice.
+    type: Object
+    uriParameters:
+        bill-id:
+          description: Unique bill identifier.
+          type: string
+          required: true
+          example: ABC123456
+    get:
+      description: Retrieves detail information about a specific agreement invoice.
+      responses:
+        200:
+          description: Ok.
+          body:
+            application/json:
+              type: object
+              properties:
+                data:
+                  type: bill.bill
+              example: !include example/bills/bill-id/get_200_bill.json
